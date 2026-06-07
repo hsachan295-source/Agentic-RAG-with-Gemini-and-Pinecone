@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
   <!-- Definitions for arrows -->
   <defs>
@@ -30,7 +31,7 @@
   <g transform="translate(210, 70)">
     <rect width="130" height="70" rx="8" fill="#fde047" stroke="#eab308" stroke-width="2"/>
     <text x="65" y="32" fill="#713f12" font-size="13" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">PyPDFLoader</text>
-    <text x="65" y="50" fill="#713f12" font-size="11" font-family="system-ui, sans-serif" text-anchor="middle">Loads &amp; Splits PDF</text>
+    <text x="65" y="50" fill="#713f12" font-size="11" font-family="system-ui, sans-serif" text-anchor="middle">Loads and Splits PDF</text>
   </g>
 
   <!-- Arrow 2 -->
@@ -49,7 +50,7 @@
   <!-- Pinecone DB -->
   <g transform="translate(630, 65)">
     <!-- Cylinder representation for database -->
-    <path d="M0,15 A40,15 0 0,0 80,15 A40,15 0 0,0 0,15 L0,65 A40,15 0 0,0 80,65 L80,15 Z" fill="#86efac" stroke="#22c55e" stroke-width="2"/>
+    <path d="M 0 15 A 40 15 0 0 0 80 15 A 40 15 0 0 0 0 15 L 0 65 A 40 15 0 0 0 80 65 L 80 15 Z" fill="#86efac" stroke="#22c55e" stroke-width="2"/>
     <ellipse cx="40" cy="15" rx="40" ry="15" fill="#86efac" stroke="#22c55e" stroke-width="2"/>
     <text x="40" y="45" fill="#14532d" font-size="13" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">Pinecone</text>
     <text x="40" y="60" fill="#14532d" font-size="10" font-family="system-ui, sans-serif" text-anchor="middle">py-index</text>
