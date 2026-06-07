@@ -12,11 +12,11 @@ The following Mermaid diagram shows the flow of data and execution. It contains 
 
 ```mermaid
 graph LR
-    %% Styles
-    classDef user fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
-    classDef pdf fill:#f8cecc,stroke:#b85450,stroke-width:2px;
-    classDef component fill:#fff2cc,stroke:#d6b656,stroke-width:2px;
-    classDef db fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    %% Styles with black text for high contrast
+    classDef user fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px,color:#000000;
+    classDef pdf fill:#f8cecc,stroke:#b85450,stroke-width:2px,color:#000000;
+    classDef component fill:#fff2cc,stroke:#d6b656,stroke-width:2px,color:#000000;
+    classDef db fill:#d5e8d4,stroke:#82b366,stroke-width:2px,color:#000000;
 
     %% Elements
     User["👤 User / Client"]:::user
@@ -43,19 +43,7 @@ graph LR
 
 ---
 
-## 2. Diagram File (`diagram.drawio`)
-
-A rich, editable Draw.io XML diagram has been created at [diagram.drawio](file:///d:/Data%20science%20course/12-Generative%20AI/project-9/diagram.drawio). 
-
-It contains the horizontal block flow with native Draw.io icons for the **User Actor** and **PDF Document**.
-
-To view or edit it:
-1. Open [Draw.io](https://app.diagrams.net/) in your web browser.
-2. Select **Open Existing Diagram** and open the [diagram.drawio](file:///d:/Data%20science%20course/12-Generative%20AI/project-9/diagram.drawio) file.
-
----
-
-## 3. Project Components & Detailed Flow
+## 2. Project Components & Detailed Flow
 
 The application performs two main workflows: **Document Ingestion** and **Agentic Querying**.
 
@@ -72,3 +60,4 @@ The application performs two main workflows: **Document Ingestion** and **Agenti
 5. **Context Retrieval**: Pinecone returns the text segments matching the semantic meaning of the user query.
 6. **Response Generation**: The agent receives these passages, synthesizes the information, and generates a summary.
 7. **User Delivery**: The final concise response is sent back to the User.
+
