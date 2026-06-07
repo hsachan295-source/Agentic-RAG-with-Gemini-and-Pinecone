@@ -1,0 +1,110 @@
+<mxfile host="65bd71144e">
+  <diagram id="project-flow-diagram" name="Project Flow">
+    <mxGraphModel dx="1066" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <!-- Layer 0 -->
+        <mxCell id="0" />
+        <!-- Layer 1 -->
+        <mxCell id="1" parent="0" />
+
+        <!-- User Actor Symbol -->
+        <mxCell id="user_actor" value="User / Client" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="40" y="270" width="30" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- PDF Document Symbol -->
+        <mxCell id="pdf_doc" value="story.pdf" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="40" y="80" width="80" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- PyPDFLoader -->
+        <mxCell id="pdf_loader" value="&lt;b&gt;PyPDFLoader&lt;/b&gt;&lt;br&gt;Loads &amp; splits text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="200" y="80" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Google Generative AI Embeddings -->
+        <mxCell id="embeddings" value="&lt;b&gt;Google GenAI Embeddings&lt;/b&gt;&lt;br&gt;(gemini-embedding-001)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="380" y="80" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Pinecone Vector Store -->
+        <mxCell id="vector_store" value="&lt;b&gt;Pinecone Index&lt;/b&gt;&lt;br&gt;(py-index)" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="600" y="75" width="110" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- LangChain Agent -->
+        <mxCell id="agent" value="&lt;b&gt;LangChain Agent&lt;/b&gt;&lt;br&gt;(gemini-3.5-flash)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="200" y="265" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- getContext Tool -->
+        <mxCell id="get_context_tool" value="&lt;b&gt;getContext Tool&lt;/b&gt;&lt;br&gt;(Similarity Search)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="420" y="265" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTIONS -->
+
+        <!-- story.pdf -> PyPDFLoader -->
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="pdf_doc" target="pdf_loader" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- PyPDFLoader -> Embeddings -->
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="pdf_loader" target="embeddings" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Embeddings -> Vector Store -->
+        <mxCell id="edge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="embeddings" target="vector_store" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- User -> Agent (Query) -->
+        <mxCell id="edge4" value="Query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;verticalAlign=bottom;" parent="1" source="user_actor" target="agent" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="300" as="sourcePoint" />
+            <mxPoint x="190" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Agent -> Tool (Trigger Tool) -->
+        <mxCell id="edge5" value="Trigger Tool" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;verticalAlign=bottom;" parent="1" source="agent" target="get_context_tool" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Tool -> Vector Store (Query DB) -->
+        <mxCell id="edge6" value="Similarity Search" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="get_context_tool" target="vector_store" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="260" as="sourcePoint" />
+            <mxPoint x="655" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Vector Store -> Tool (Context Results) -->
+        <mxCell id="edge7" value="Return Matches" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="vector_store" target="get_context_tool" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="628" y="160" as="sourcePoint" />
+            <mxPoint x="510" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Tool -> Agent (Provide Context) -->
+        <mxCell id="edge8" value="Context" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="get_context_tool" target="agent" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="318" as="sourcePoint" />
+            <mxPoint x="350" y="318" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Agent -> User (Response) -->
+        <mxCell id="edge9" value="Response" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0.5;entryPerimeter=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" parent="1" source="agent" target="user_actor" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="318" as="sourcePoint" />
+            <mxPoint x="60" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
